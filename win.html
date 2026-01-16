@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations! - Dialog 5G Ultra</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .success-card {
+            background: white;
+            padding: 2.5rem 1.5rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-premium);
+            text-align: center;
+            max-width: 500px;
+            width: 92%;
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .check-mark-bg {
+            width: 80px;
+            height: 80px;
+            background: #E8F5E9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            animation: scaleIn 0.5s 0.2s both cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 4px solid #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .check-mark-bg i {
+            color: #4CAF50;
+            font-size: 2.5rem;
+        }
+
+        .congrats-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dialog-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .reward-info {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .reward-box {
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFF0F0 100%);
+            border: 2px dashed var(--dialog-red);
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .reward-amount {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--dialog-red);
+            display: block;
+            margin-bottom: 0.2rem;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .reward-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Progress Bar Styles */
+        .progress-container {
+            background: #f0f0f0;
+            border-radius: 50px;
+            height: 14px;
+            width: 100%;
+            margin: 1.5rem 0 0.5rem;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #25D366, #128C7E);
+            transition: width 0.5s ease-in-out;
+            border-radius: 50px;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.2) 25%,
+                    transparent 25%,
+                    transparent 50%,
+                    rgba(255, 255, 255, 0.2) 50%,
+                    rgba(255, 255, 255, 0.2) 75%,
+                    transparent 75%,
+                    transparent);
+            background-size: 20px 20px;
+            animation: moveProgress 1s linear infinite;
+        }
+
+        @keyframes moveProgress {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 20px 0;
+            }
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .share-instructions {
+            background: #F0F7FF;
+            padding: 1.2rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #007bff;
+            text-align: left;
+        }
+
+        .share-instructions h3 {
+            font-size: 1rem;
+            color: #007bff;
+            margin-bottom: 0.4rem;
+        }
+
+        .share-instructions p {
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            width: 100%;
+            padding: 1.2rem;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .whatsapp-btn:hover {
+            background: #20BA5A;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            animation: none;
+            box-shadow: none;
+        }
+
+        .secondary-msg {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f00;
+            top: -10px;
+            border-radius: 50%;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-left">
+            <i class="fa-solid fa-bars menu-icon" style="cursor: pointer;" onclick="openMultiLinks()"></i>
+            <div class="logo-container">
+                <img src="assets/logo.png" alt="Dialog Logo" style="cursor: pointer;" onclick="openMultiLinks()">
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <div class="icon-actions">
+                <div class="circle-icon" style="cursor: pointer;"
+                    onclick="window.open('https://www.effectivegatecpm.com/trysyg8wdd?key=25124f6ecbf14c03a0d2d526bcf6f614', '_blank')">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <div class="circle-icon dark" style="cursor: pointer;"
+                    onclick="window.open('https://www.effectivegatecpm.com/tm7a37nnm?key=debbb114377f79f11bfa3d1e6893ff2b', '_blank')">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="hero">
+        <div class="success-card">
+            <div class="check-mark-bg">
+                <i class="fa-solid fa-gift"></i>
+            </div>
+
+            <h1 class="congrats-title">සුබ පැතුම්!</h1>
+            <p class="reward-info">ඔබ Dialog 5G Ultra ප්‍රවර්ධනය සඳහා සුදුසුකම් ලබා ඇත.</p>
+
+            <div class="reward-box">
+                <span class="reward-amount" id="main-reward">20GB</span>
+                <span class="reward-text">නොමිලේ ඩේටා තෑග්ගක්! 🎁</span>
+            </div>
+
+            <div class="share-instructions">
+                <h3>මෙම පියවර අනුගමනය කරන්න:</h3>
+                <p>මෙම පණිවිඩය ඔබේ මිතුරන් හෝ WhatsApp සමූහ (Groups) 10ක් සමඟ බෙදා ගන්න. එවිට ඔබගේ ඩේටා තෑග්ග
+                    ස්වයංක්‍රීයව සක්‍රිය වනු ඇත.</p>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="progress-text" id="progress-text">බෙදාගැනීමේ ප්‍රගතිය: 0%</div>
+
+            <button class="whatsapp-btn" id="share-btn" onclick="handleShare()">
+                <i class="fa-brands fa-whatsapp"></i>
+                WhatsApp හරහා දැන්ම බෙදා ගන්න
+            </button>
+
+            <p class="secondary-msg">සටහන: ඔබ සම්පූර්ණයෙන් බෙදා හැරීම අවසන් කළ පසු "සක්‍රිය කරන්න" බොත්තම දිස්වනු ඇත.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        let shareCount = 0;
+        const totalRequired = 10;
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const shareBtn = document.getElementById('share-btn');
+
+        const externalLinks = [
+            "https://www.effectivegatecpm.com/trysyg8wdd?key=25124f6ecbf14c03a0d2d526bcf6f614",
+            "https://www.effectivegatecpm.com/tm7a37nnm?key=debbb114377f79f11bfa3d1e6893ff2b",
+            "https://www.effectivegatecpm.com/kc0icjp6s?key=c57ca6e4ab310734acc722687c55a0fe"
+        ];
+
+        function openMultiLinks() {
+            externalLinks.forEach(link => {
+                window.open(link, '_blank');
+            });
+        }
+
+        function handleShare() {
+            // Updated creative message
+            const messages = [
+                "WOW!  Dialog 5G Ultra වෙතින් මට නොමිලේ 20GB ඩේටා ලැබුණා! \n\nඔබත් දැන්ම මෙතැනින් ලබාගන්න:\n https://dialog-lk.github.io/dialog.gift/\n\nඉක්මන් කරන්න! \n\nකොන්දෙසි සහිතයි",
+                "නියම වැඩක්!  Dialog එකෙන් 20GB Free දෙනවා. මම දැන් ගත්තා! ඔයාලත් ගන්න මෙන්න ලින්ක් එක:\n https://dialog-lk.github.io/dialog.gift/\n\nසීමිත කාලයක් පමණයි! ",
+                "මේක නම් අතහරින්න එපා!  Dialog 5G Ultra Launch එක වෙනුවෙන් 20GB Data දෙනවා හැමෝටම.\n\nමෙතනින් ගිහින් ගන්න:\n https://dialog-lk.github.io/dialog.gift/\n\nDialog පාවිච්චි කරන හැමෝටම පුළුවන්! \n\nකොන්දෙසි සහිතයි"
+            ];
+
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(randomMsg)}`;
+
+            // Open WhatsApp first (user's primary intent)
+            window.open(whatsappUrl, '_blank');
+            
+            // Open other links with small delays to avoid popup blocking
+            // Note: Browsers may still block some of these, but WhatsApp should work
+            setTimeout(() => {
+                window.open(externalLinks[0], '_blank');
+            }, 100);
+            setTimeout(() => {
+                window.open(externalLinks[1], '_blank');
+            }, 200);
+            setTimeout(() => {
+                window.open(externalLinks[2], '_blank');
+            }, 300);
+
+            // Update progress
+            if (shareCount < totalRequired) {
+                shareCount++;
+                const percentage = Math.floor((shareCount / totalRequired) * 100);
+                progressBar.style.width = percentage + '%';
+                progressText.innerText = `බෙදාගැනීමේ ප්‍රගතිය: ${percentage}% (${shareCount}/${totalRequired})`;
+
+                if (shareCount >= totalRequired) {
+                    completeSharing();
+                }
+            }
+        }
+
+        function completeSharing() {
+            shareBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> දැන් සක්‍රිය කරන්න';
+            shareBtn.style.background = '#ED1C24';
+            shareBtn.style.animation = 'none';
+            progressText.innerText = "බෙදාගැනීම සාර්ථකයි! ✅";
+            progressText.style.color = "#25D366";
+
+            shareBtn.onclick = function () {
+                openMultiLinks();
+                alert("ඔබගේ 20GB ඩේටා තෑග්ග පැය 24ක් ඇතුළත සක්‍රිය වනු ඇත. ස්තූතියි!");
+                window.location.href = "https://www.dialog.lk";
+            };
+        }
+    </script>
+</body>
+
+</html>
